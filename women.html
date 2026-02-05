@@ -121,7 +121,7 @@
         footer { padding: 60px 8% 30px; background: #050505; border-top: 1px solid rgba(212,175,55,0.1); }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 30px; text-align: center; }
         .footer-grid h4 { color: var(--gold); font-size: 18px; margin-bottom: 15px; text-transform: uppercase; font-family: 'EB Garamond'; }
-        .footer-grid p { color: var(--gray); font-size: 13px; font-family: 'Work Sans'; margin-bottom: 5px; }
+        .footer-grid p { color: var(--gray); font-size: 14px; font-family: 'Work Sans'; margin-bottom: 5px; }
 
         /* --- MEDIA QUERIES --- */
         @media (max-width: 992px) {
@@ -129,17 +129,17 @@
             .menu-toggle { display: block; }
             .nav-list {
                 display: none; flex-direction: column; position: absolute;
-                top: 100%; left: 0; width: 100%; background: white;
+                top: 70px; left: 0; width: 100%; background: white;
                 padding: 20px 0; box-shadow: 0 10px 15px rgba(0,0,0,0.1);
             }
             .nav-list.active { display: flex; }
             .nav-item { margin: 10px 0; width: 100%; text-align: center; }
             .dropdown { position: relative; width: 100%; opacity: 1; visibility: visible; transform: none; box-shadow: none; display: none; }
             .nav-item:hover .dropdown { display: block; }
+            .hero { background-attachment: scroll; }
         }
 
         @media (max-width: 600px) {
-            .hero { height: 50vh; background-attachment: scroll; }
             .menu-section { padding: 40px 5%; }
             .menu-grid { grid-template-columns: 1fr; }
             .price { font-size: 16px; }
@@ -175,40 +175,146 @@
     </section>
 
     <section class="menu-section" id="menu">
-        <div class="section-header reveal">
-            <h2>Madame Menu</h2>
-            <div style="width: 60px; height: 1px; background: var(--gold); margin: 20px auto;"></div>
-        </div>
+       <div class="menu-grid">
 
-        <div class="filter-nav reveal">
-            <button class="active" onclick="filterMenu('all', this)">All Collections</button>
-            <button onclick="filterMenu('hair', this)">Styling & Texture</button>
-            <button onclick="filterMenu('skin', this)">Skin & Facial</button>
-            <button onclick="filterMenu('makeup', this)">Make-up</button>
-        </div>
+    <!-- 1. Hair Cuts, Wash & Styling -->
+    <div class="category-block reveal" data-cat="hair">
+        <h3>Hair Cuts, Wash & Styling</h3>
 
-        <div class="menu-grid">
-            <div class="category-block reveal" data-cat="hair">
-                <h3>Styling & Color</h3>
-                <div class="service-row"><span>Creative Stylist Cut</span><div class="service-line"></div><span class="price">₹1700</span></div>
-                <div class="service-row"><span>Global Color (Long)</span><div class="service-line"></div><span class="price">₹7750</span></div>
-                <div class="service-row"><span>Nanoplastia (Long)</span><div class="service-line"></div><span class="price">₹13000</span></div>
-            </div>
+        <div class="service-row"><span>Girls Cut (Below 12)</span><div class="service-line"></div><span class="price">₹675</span></div>
+        <div class="service-row"><span>Fringe Cut</span><div class="service-line"></div><span class="price">₹650</span></div>
+        <div class="service-row"><span>Master Stylist</span><div class="service-line"></div><span class="price">₹1200</span></div>
+        <div class="service-row"><span>Senior Stylist</span><div class="service-line"></div><span class="price">₹1400</span></div>
+        <div class="service-row"><span>Creative Stylist</span><div class="service-line"></div><span class="price">₹1700</span></div>
 
-            <div class="category-block reveal" data-cat="skin">
-                <h3>Skin Care</h3>
-                <div class="service-row"><span>Hydra Facial</span><div class="service-line"></div><span class="price">₹5750</span></div>
-                <div class="service-row"><span>Signature Skeyndor</span><div class="service-line"></div><span class="price">₹11000</span></div>
-                <div class="service-row"><span>Full Body De-Tan</span><div class="service-line"></div><span class="price">₹15500</span></div>
-            </div>
+        <div class="service-row"><span>Luxury Wash (Add-on)</span><div class="service-line"></div><span class="price">₹325</span></div>
 
-            <div class="category-block reveal" data-cat="makeup">
-                <h3>Bridal & Special</h3>
-                <div class="service-row"><span>Wedding HD Make-up</span><div class="service-line"></div><span class="price">₹15500</span></div>
-                <div class="service-row"><span>Gel Nail Extension</span><div class="service-line"></div><span class="price">₹3000</span></div>
-                <div class="service-row"><span>Kérastase Youth Ritual</span><div class="service-line"></div><span class="price">₹6000</span></div>
-            </div>
-        </div>
+        <div class="service-row"><span>Blow Dry (S/M/L)</span><div class="service-line"></div><span class="price">₹450–₹650</span></div>
+        <div class="service-row"><span>Ironing / Crimping / Tongs</span><div class="service-line"></div><span class="price">₹750–₹950</span></div>
+
+        <div class="service-row"><span>Classic Wash & Blast Dry</span><div class="service-line"></div><span class="price">₹800–₹1000</span></div>
+        <div class="service-row"><span>Luxury Wash & Blast Dry</span><div class="service-line"></div><span class="price">₹950–₹1400</span></div>
+    </div>
+
+    <!-- 2. Hair Color Services -->
+    <div class="category-block reveal" data-cat="hair">
+        <h3>Hair Color Services</h3>
+
+        <div class="service-row"><span>INOA Global Color</span><div class="service-line"></div><span class="price">₹4500–₹7500</span></div>
+        <div class="service-row"><span>Majirel Global Color</span><div class="service-line"></div><span class="price">₹4750–₹7750</span></div>
+        <div class="service-row"><span>Root Touch Up</span><div class="service-line"></div><span class="price">₹1800–₹1900</span></div>
+        <div class="service-row"><span>Toning</span><div class="service-line"></div><span class="price">₹3000–₹5000</span></div>
+        <div class="service-row"><span>Pre-Lightening</span><div class="service-line"></div><span class="price">₹7250–₹10500</span></div>
+        <div class="service-row"><span>Highlights</span><div class="service-line"></div><span class="price">₹6250–₹9000</span></div>
+        <div class="service-row"><span>Ombre / Balayage</span><div class="service-line"></div><span class="price">₹2000–₹3250</span></div>
+    </div>
+
+    <!-- 3. Hair & Scalp Treatments -->
+    <div class="category-block reveal" data-cat="hair">
+        <h3>Hair & Scalp Treatments</h3>
+
+        <div class="service-row"><span>Head Massage</span><div class="service-line"></div><span class="price">₹1400–₹1600</span></div>
+        <div class="service-row"><span>Hair Spa</span><div class="service-line"></div><span class="price">₹1800–₹2200</span></div>
+        <div class="service-row"><span>Olaplex Bond Strengthening</span><div class="service-line"></div><span class="price">₹2500–₹3000</span></div>
+        <div class="service-row"><span>Molecular Damage Repair</span><div class="service-line"></div><span class="price">₹2400–₹2800</span></div>
+        <div class="service-row"><span>Olaplex with Color</span><div class="service-line"></div><span class="price">₹2000</span></div>
+        <div class="service-row"><span>Root Deep Scalp Shot</span><div class="service-line"></div><span class="price">₹1000</span></div>
+    </div>
+
+    <!-- 4. Texture, Protein & Botox -->
+    <div class="category-block reveal" data-cat="hair">
+        <h3>Texture, Protein & Botox</h3>
+
+        <div class="service-row"><span>Straightening</span><div class="service-line"></div><span class="price">₹7000–₹11000</span></div>
+        <div class="service-row"><span>Smoothening</span><div class="service-line"></div><span class="price">₹8000–₹11000</span></div>
+        <div class="service-row"><span>Protein Botox</span><div class="service-line"></div><span class="price">₹9000–₹12000</span></div>
+        <div class="service-row"><span>Nanoplastia</span><div class="service-line"></div><span class="price">₹9500–₹13000</span></div>
+    </div>
+
+    <!-- 5. Kerastase Rituals -->
+    <div class="category-block reveal" data-cat="hair">
+        <h3>Kérastase Rituals</h3>
+
+        <div class="service-row"><span>Express Rituals</span><div class="service-line"></div><span class="price">₹1600–₹2800</span></div>
+        <div class="service-row"><span>Signature Rituals</span><div class="service-line"></div><span class="price">₹4500–₹4750</span></div>
+        <div class="service-row"><span>Experience Rituals</span><div class="service-line"></div><span class="price">₹6000</span></div>
+        <div class="service-row"><span>Scalp Rituals</span><div class="service-line"></div><span class="price">₹4250</span></div>
+        <div class="service-row"><span>Hair Rejuva (QR678)</span><div class="service-line"></div><span class="price">₹11000–₹45000</span></div>
+    </div>
+
+    <!-- 6. Threading & Waxing -->
+    <div class="category-block reveal" data-cat="skin">
+        <h3>Threading & Waxing</h3>
+
+        <div class="service-row"><span>Threading</span><div class="service-line"></div><span class="price">₹130–₹1150</span></div>
+        <div class="service-row"><span>Stripless / Italian Wax</span><div class="service-line"></div><span class="price">₹500–₹2750</span></div>
+        <div class="service-row"><span>Roll-On Wax</span><div class="service-line"></div><span class="price">₹900–₹4000</span></div>
+    </div>
+
+    <!-- 7. Clean Up, Facials & Masks -->
+    <div class="category-block reveal" data-cat="skin">
+        <h3>Clean-Up, Facials & Masks</h3>
+
+        <div class="service-row"><span>Clean Ups</span><div class="service-line"></div><span class="price">₹1500–₹3000</span></div>
+        <div class="service-row"><span>Classic / Premium Facial</span><div class="service-line"></div><span class="price">₹3500–₹6750</span></div>
+        <div class="service-row"><span>Luxury / Signature Facial</span><div class="service-line"></div><span class="price">₹8500–₹11000</span></div>
+        <div class="service-row"><span>Hydra / Yona Facial</span><div class="service-line"></div><span class="price">₹3000–₹5750</span></div>
+        <div class="service-row"><span>Masks</span><div class="service-line"></div><span class="price">₹1000–₹2500</span></div>
+    </div>
+
+    <!-- 8. De-Tan & Bleach -->
+    <div class="category-block reveal" data-cat="skin">
+        <h3>De-Tan & Bleach</h3>
+
+        <div class="service-row"><span>De-Tan</span><div class="service-line"></div><span class="price">₹1300–₹15500</span></div>
+        <div class="service-row"><span>Bleach</span><div class="service-line"></div><span class="price">₹175–₹650</span></div>
+    </div>
+
+    <!-- 9. Manicure & Pedicure -->
+    <div class="category-block reveal" data-cat="skin">
+        <h3>Manicure & Pedicure</h3>
+
+        <div class="service-row"><span>Classic / Premium</span><div class="service-line"></div><span class="price">₹1200–₹1900</span></div>
+        <div class="service-row"><span>Luxury</span><div class="service-line"></div><span class="price">₹2200–₹2400</span></div>
+        <div class="service-row"><span>Heel Repair</span><div class="service-line"></div><span class="price">₹700</span></div>
+        <div class="service-row"><span>Reflexology</span><div class="service-line"></div><span class="price">₹1100–₹1500</span></div>
+    </div>
+
+    <!-- 10. Body Services -->
+    <div class="category-block reveal" data-cat="skin">
+        <h3>Body Services</h3>
+
+        <div class="service-row"><span>Back Massage</span><div class="service-line"></div><span class="price">₹1100</span></div>
+        <div class="service-row"><span>Body Exfoliation</span><div class="service-line"></div><span class="price">₹2750</span></div>
+        <div class="service-row"><span>Body Polishing & Wrap</span><div class="service-line"></div><span class="price">₹4500–₹5500</span></div>
+        <div class="service-row"><span>Swedish / Deep Tissue</span><div class="service-line"></div><span class="price">₹2750</span></div>
+    </div>
+
+    <!-- 11. Nails – Art & Extensions -->
+    <div class="category-block reveal" data-cat="makeup">
+        <h3>Nails – Art & Extensions</h3>
+
+        <div class="service-row"><span>Nail Art</span><div class="service-line"></div><span class="price">₹75–₹775</span></div>
+        <div class="service-row"><span>Temporary Extension</span><div class="service-line"></div><span class="price">₹1750</span></div>
+        <div class="service-row"><span>Acrylic / Gel Extension</span><div class="service-line"></div><span class="price">₹3000–₹3500</span></div>
+        <div class="service-row"><span>Extension Removal</span><div class="service-line"></div><span class="price">₹900</span></div>
+        <div class="service-row"><span>Gel Polish</span><div class="service-line"></div><span class="price">₹2000 / ₹400</span></div>
+    </div>
+
+    <!-- 12. Makeup Services -->
+    <div class="category-block reveal" data-cat="makeup">
+        <h3>Makeup Services</h3>
+
+        <div class="service-row"><span>Bridal HD / Airbrush</span><div class="service-line"></div><span class="price">₹15500–₹22500</span></div>
+        <div class="service-row"><span>Party Makeup</span><div class="service-line"></div><span class="price">₹4000–₹5500</span></div>
+        <div class="service-row"><span>Hairstyling</span><div class="service-line"></div><span class="price">₹2000–₹2500</span></div>
+        <div class="service-row"><span>Saree Draping</span><div class="service-line"></div><span class="price">₹1200</span></div>
+        <div class="service-row"><span>Trial Makeup</span><div class="service-line"></div><span class="price">₹2250</span></div>
+        <div class="service-row"><span>Venue Charge (Ahmedabad)</span><div class="service-line"></div><span class="price">₹2500</span></div>
+    </div>
+
+</div>
+
     </section>
 
     <footer>

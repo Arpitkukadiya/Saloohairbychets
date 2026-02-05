@@ -17,7 +17,6 @@
             --near-black: #121212;
             --white: #ffffff;
             --gray: #888;
-            /* Professional UI Sync */
             --primary-blue: #2c396b; 
             --accent-sand: #e9ccbb;
             --transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
@@ -30,6 +29,7 @@
             font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
+            width: 100%;
         }
 
         h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
@@ -37,21 +37,21 @@
         .reveal { opacity: 0; transform: translateY(40px); transition: var(--transition); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* --- STICKY PROFESSIONAL HEADER --- */
+        /* --- RESPONSIVE STICKY HEADER --- */
         header {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 8%; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px);
-            position: fixed; width: 100%; top: 0; z-index: 1000; 
+            padding: 10px 8%; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px);
+            position: fixed; width: 100%; top: 0; z-index: 2000; 
             box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            transition: 0.3s;
         }
 
         .logo img { height: 50px; width: auto; display: block; }
 
-        nav { display: flex; align-items: center; }
+        /* Navigation List */
+        .nav-list { display: flex; align-items: center; list-style: none; }
         .nav-item { position: relative; margin-left: 25px; }
 
-        nav a { 
+        .nav-item a { 
             text-decoration: none; color: var(--primary-blue); 
             font-size: 13px; text-transform: uppercase; font-weight: 600; 
             letter-spacing: 1.5px; transition: 0.3s;
@@ -59,16 +59,21 @@
             font-family: 'Work Sans', sans-serif;
         }
 
-        nav a:hover { color: var(--gold); }
+        .nav-item a:hover { color: var(--gold); }
 
         /* Dropdown */
-        .dropdown { position: absolute; top: 100%; left: 0; background: white; min-width: 180px; 
-                    box-shadow: 0 8px 25px rgba(0,0,0,0.1); opacity: 0; visibility: hidden; 
-                    transform: translateY(10px); transition: 0.3s; padding: 10px 0; }
+        .dropdown { 
+            position: absolute; top: 100%; left: 0; background: white; min-width: 180px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1); opacity: 0; visibility: hidden; 
+            transform: translateY(10px); transition: 0.3s; padding: 10px 0; 
+        }
         
         .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
-        .dropdown a { display: block; padding: 10px 20px; text-transform: none; font-weight: 400; color: var(--primary-blue); }
-        .dropdown a:hover { background: #fdfcfb; color: var(--gold); }
+        .dropdown a { display: block; padding: 10px 20px; text-transform: none; font-weight: 400; color: var(--primary-blue); border: none; }
+        .dropdown a:hover { color: var(--gold); background: #fdfcfb; }
+
+        /* Hamburger Menu Icon */
+        .menu-toggle { display: none; font-size: 24px; color: var(--primary-blue); cursor: pointer; }
 
         .call-btn {
             background: var(--primary-blue);
@@ -77,48 +82,67 @@
             border-radius: 2px;
             font-weight: 600;
         }
-        .call-btn:hover { background: var(--gold); transform: scale(1.05); }
 
-        /* --- HERO --- */
+        /* --- HERO (Margin for Sticky Nav) --- */
         .hero {
-            height: 70vh; margin-top: 60px;
+            height: 60vh; margin-top: 70px;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('1.jpeg');
             background-size: cover; background-position: center; background-attachment: fixed;
-            text-align: center;
+            text-align: center; padding: 0 20px;
         }
-        .hero h1 { font-size: clamp(50px, 10vw, 100px); font-style: italic; color: var(--white); }
+        .hero h1 { font-size: clamp(35px, 8vw, 100px); font-style: italic; color: var(--white); }
 
         /* --- MENU SECTION --- */
-        .menu-section { padding: 100px 8%; }
-        .section-header { text-align: center; margin-bottom: 80px; }
-        .section-header h2 { font-size: 50px; color: var(--gold); text-transform: uppercase; letter-spacing: 5px; }
+        .menu-section { padding: 60px 8%; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: clamp(30px, 5vw, 50px); color: var(--gold); text-transform: uppercase; letter-spacing: 5px; }
 
-        .filter-nav { display: flex; justify-content: center; gap: 30px; margin-bottom: 60px; flex-wrap: wrap; }
-        .filter-nav button { background: none; border: 1px solid var(--gold); color: var(--white); cursor: pointer; padding: 10px 25px; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
+        .filter-nav { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
+        .filter-nav button { 
+            background: none; border: 1px solid var(--gold); color: var(--white); 
+            padding: 8px 20px; cursor: pointer; font-size: 11px; letter-spacing: 2px; 
+            text-transform: uppercase; transition: 0.3s; 
+        }
         .filter-nav button.active { background: var(--gold); color: var(--black); }
 
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 60px; }
-        .category-block { margin-bottom: 60px; }
+        /* Menu Grid */
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        .category-block { margin-bottom: 40px; }
         .category-block.hidden { display: none; }
-        .category-block h3 { font-size: 32px; color: var(--gold); margin-bottom: 35px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 10px; }
+        .category-block h3 { font-size: 28px; color: var(--gold); margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 10px; }
 
-        .service-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 25px; transition: 0.3s; cursor: pointer; }
-        .service-row:hover { color: var(--gold); transform: translateX(10px); }
-        .service-line { flex-grow: 1; border-bottom: 1px solid rgba(255,255,255,0.1); margin: 0 15px; }
-        .price { font-family: 'Playfair Display'; font-style: italic; font-size: 20px; }
+        .service-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px; transition: 0.3s; cursor: pointer; }
+        .service-row:hover { color: var(--gold); transform: translateX(5px); }
+        .service-line { flex-grow: 1; border-bottom: 1px solid rgba(255,255,255,0.1); margin: 0 10px; }
+        .price { font-family: 'Playfair Display'; font-style: italic; font-size: 18px; white-space: nowrap; }
 
         /* --- BRANCH FOOTER --- */
-        footer { padding: 80px 8% 40px; background: #050505; border-top: 1px solid rgba(212,175,55,0.1); }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; text-align: center;}
-        .footer-grid h4 { color: var(--gold); font-size: 20px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; font-family: 'EB Garamond'; }
-        .footer-grid p { color: var(--gray); font-size: 14px; font-family: 'Work Sans'; margin-bottom: 5px; }
+        footer { padding: 60px 8% 30px; background: #050505; border-top: 1px solid rgba(212,175,55,0.1); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 30px; text-align: center; }
+        .footer-grid h4 { color: var(--gold); font-size: 18px; margin-bottom: 15px; text-transform: uppercase; font-family: 'EB Garamond'; }
+        .footer-grid p { color: var(--gray); font-size: 13px; font-family: 'Work Sans'; margin-bottom: 5px; }
 
-        @media (max-width: 768px) {
-            header { padding: 15px 5%; }
-            nav { display: none; }
+        /* --- MEDIA QUERIES --- */
+        @media (max-width: 992px) {
+            header { padding: 10px 5%; }
+            .menu-toggle { display: block; }
+            .nav-list {
+                display: none; flex-direction: column; position: absolute;
+                top: 70px; left: 0; width: 100%; background: white;
+                padding: 20px 0; box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            }
+            .nav-list.active { display: flex; }
+            .nav-item { margin: 10px 0; width: 100%; text-align: center; }
+            .dropdown { position: relative; width: 100%; opacity: 1; visibility: visible; transform: none; box-shadow: none; display: none; }
+            .nav-item:hover .dropdown { display: block; }
+            .hero { background-attachment: scroll; }
+        }
+
+        @media (max-width: 600px) {
+            .menu-section { padding: 40px 5%; }
             .menu-grid { grid-template-columns: 1fr; }
-            .section-header h2 { font-size: 35px; }
+            .price { font-size: 16px; }
         }
     </style>
 </head>
@@ -128,17 +152,20 @@
         <a href="index.html" class="logo">
             <img src="logo.jpeg" alt="Saloo Hair by Chets">
         </a>
+        <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
         <nav>
-            <div class="nav-item"><a href="index.html">Home</a></div>
-            <div class="nav-item"><a href="#about">About Us</a></div>
-            <div class="nav-item">
-                <a href="#">Services <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
-                <div class="dropdown">
-                    <a href="men.html">Men's Grooming</a>
-                    <a href="women.html">Women's Beauty</a>
-                </div>
-            </div>
-            <div class="nav-item"><a href="tel:9925569261" class="call-btn">9925569261</a></div>
+            <ul class="nav-list" id="navList">
+                <li class="nav-item"><a href="index.html">Home</a></li>
+                <li class="nav-item"><a href="#about">About Us</a></li>
+                <li class="nav-item">
+                    <a href="#">Services <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
+                    <div class="dropdown">
+                        <a href="men.html">Men's Grooming</a>
+                        <a href="women.html">Women's Beauty</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="tel:9925569261" class="call-btn">Call Now</a></li>
+            </ul>
         </nav>
     </header>
 
@@ -157,26 +184,27 @@
             <button class="active" onclick="filterMenu('all', this)">All Collections</button>
             <button onclick="filterMenu('hair', this)">Styling & Texture</button>
             <button onclick="filterMenu('skin', this)">Skin & Facial</button>
+            <button onclick="filterMenu('rituals', this)">Rituals</button>
             <button onclick="filterMenu('makeup', this)">Make-up</button>
         </div>
 
         <div class="menu-grid">
             <div class="category-block reveal" data-cat="hair">
-                [cite_start]<h3>Styling & Color [cite: 3, 31]</h3>
+                <h3>Cuts & Styling</h3>
                 [cite_start]<div class="service-row"><span>Creative Stylist Cut</span><div class="service-line"></div><span class="price">₹1700 [cite: 31]</span></div>
                 [cite_start]<div class="service-row"><span>Global Color (Long)</span><div class="service-line"></div><span class="price">₹7750 [cite: 43]</span></div>
                 [cite_start]<div class="service-row"><span>Nanoplastia (Long)</span><div class="service-line"></div><span class="price">₹13000 [cite: 96]</span></div>
             </div>
 
             <div class="category-block reveal" data-cat="skin">
-                [cite_start]<h3>Skin Care [cite: 8, 144]</h3>
+                <h3>Skin Care</h3>
                 [cite_start]<div class="service-row"><span>Hydra Facial</span><div class="service-line"></div><span class="price">₹5750 [cite: 152]</span></div>
                 [cite_start]<div class="service-row"><span>Signature Skeyndor</span><div class="service-line"></div><span class="price">₹11000 [cite: 152]</span></div>
                 [cite_start]<div class="service-row"><span>Full Body De-Tan</span><div class="service-line"></div><span class="price">₹15500 [cite: 165]</span></div>
             </div>
 
             <div class="category-block reveal" data-cat="makeup">
-                [cite_start]<h3>Bridal & Special [cite: 191]</h3>
+                <h3>Bridal & Special</h3>
                 [cite_start]<div class="service-row"><span>Wedding HD Make-up</span><div class="service-line"></div><span class="price">₹15500 [cite: 198]</span></div>
                 [cite_start]<div class="service-row"><span>Gel Nail Extension</span><div class="service-line"></div><span class="price">₹3000 [cite: 185]</span></div>
                 [cite_start]<div class="service-row"><span>Kérastase Youth Ritual</span><div class="service-line"></div><span class="price">₹6000 [cite: 112]</span></div>
@@ -188,8 +216,8 @@
         <div class="footer-grid reveal">
             <div>
                 <h4>Branch: Kudasan</h4>
-                <p>Siddhraj Z Square, Shop No. W00-7</p>
-                <p>Kudasan, Gandhinagar - 382419</p>
+                <p>Siddhraj Z Square, W00-7</p>
+                <p>Gandhinagar - 382419</p>
             </div>
             <div>
                 <h4>Branch: Ahmedabad</h4>
@@ -197,15 +225,19 @@
                 <p>+91 81412 34567</p>
             </div>
             <div>
-                <h4>Contact</h4>
+                <h4>Connect</h4>
                 <p>Chetsnai1111@gmail.com</p>
                 <p>Support: 9925569261</p>
             </div>
         </div>
-        <p style="text-align:center; font-size: 10px; color: #444; margin-top: 40px; letter-spacing: 2px;">© 2026 SALOO HAIR BY CHETS | 5% GST APPLICABLE</p>
+        [cite_start]<p style="text-align:center; font-size: 10px; color: #444; margin-top: 30px; letter-spacing: 2px;">© 2026 SALOO HAIR BY CHETS | [cite: 38] 5% GST APPLICABLE</p>
     </footer>
 
     <script>
+        function toggleMenu() {
+            document.getElementById('navList').classList.toggle('active');
+        }
+
         function filterMenu(category, btn) {
             const blocks = document.querySelectorAll('.category-block');
             const btns = document.querySelectorAll('.filter-nav button');
