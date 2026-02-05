@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saloo Hair by Chets | Luxury Grooming & Beauty</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c396b;
+            --accent: #e9ccbb;
+            --white: #ffffff;
+            --bg-light: #fdfcfb;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { box-sizing: border-box; }
+        body, html { margin: 0; padding: 0; font-family: 'Work Sans', sans-serif; background-color: var(--bg-light); overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'EB Garamond', serif; color: var(--primary); letter-spacing: 1px; }
+
+        /* --- PROFESSIONAL NAVIGATION --- */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 8%; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px);
+            position: fixed; width: 100%; top: 0; z-index: 1000; 
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        /* Logo Image Container */
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .logo img { height: 50px; width: auto; }
+
+        nav { display: flex; align-items: center; }
+        .nav-item { position: relative; margin-left: 25px; }
+
+        nav a { 
+            text-decoration: none; color: var(--primary); 
+            font-size: 13px; text-transform: uppercase; font-weight: 600; 
+            letter-spacing: 1.5px; transition: var(--transition);
+            padding: 10px 0;
+        }
+
+        nav a::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+            background-color: var(--accent); transition: var(--transition);
+        }
+
+        nav a:hover { color: var(--accent); }
+        nav a:hover::after { width: 100%; }
+
+        .dropdown { position: absolute; top: 100%; left: 0; background: white; min-width: 180px; 
+                    box-shadow: 0 8px 25px rgba(0,0,0,0.1); opacity: 0; visibility: hidden; 
+                    transform: translateY(10px); transition: var(--transition); padding: 10px 0; }
+        
+        .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+
+        .dropdown a { display: block; padding: 10px 20px; text-transform: none; font-weight: 400; border: none; }
+        .dropdown a::after { display: none; }
+        .dropdown a:hover { background: var(--bg-light); color: var(--primary); padding-left: 25px; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(44,57,107,0.4), rgba(44,57,107,0.2)), url('1.jpeg');
+            background-size: cover; background-attachment: fixed; background-position: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: white; text-align: center; animation: fadeIn 1.5s ease-out;
+        }
+        .hero h1 { color: white; font-size: clamp(40px, 8vw, 85px); margin: 0; line-height: 1.1; }
+        .hero p { font-size: 18px; letter-spacing: 4px; text-transform: uppercase; margin-top: 20px; }
+
+        /* --- GENDER SELECTION CARDS --- */
+        .gender-container { display: flex; flex-wrap: wrap; width: 100%; height: 600px; }
+        .gender-card { 
+            flex: 1; min-width: 300px; position: relative; overflow: hidden; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-decoration: none; transition: var(--transition);
+        }
+        .men-side { background: var(--primary); color: var(--white); }
+        .women-side { background: var(--accent); color: var(--primary); }
+        
+        .gender-card i { font-size: 60px; margin-bottom: 20px; transition: var(--transition); }
+        .gender-card h2 { color: inherit; font-size: 35px; }
+        
+        .gender-card:hover { flex: 1.5; }
+        .gender-card:hover i { transform: scale(1.2) rotate(5deg); }
+
+        .btn-view {
+            margin-top: 20px; padding: 12px 35px; border: 1px solid currentColor;
+            text-transform: uppercase; font-size: 11px; letter-spacing: 2px; transition: var(--transition);
+        }
+        .gender-card:hover .btn-view { background: white; color: var(--primary); border-color: white; }
+
+        /* --- FOOTER --- */
+        footer { padding: 80px 8%; background: #1a1a1a; color: #999; text-align: center; }
+        footer h3 { color: var(--accent); margin-bottom: 20px; text-transform: uppercase; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <img src="logo.jpeg" alt="Saloo Hair by Chets">
+        </a>
+        <nav>
+            <div class="nav-item"><a href="index.html">Home</a></div>
+            <div class="nav-item"><a href="#about">About Us</a></div>
+            <div class="nav-item">
+                <a href="#">Services <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
+                <div class="dropdown">
+                    <a href="men.html">Men's Grooming</a>
+                    <a href="women.html">Women's Beauty</a>
+                </div>
+            </div>
+            <div class="nav-item"><a href="#contact">Contact Us</a></div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <p>Premium Hair Artistry</p>
+        <h1>Saloo Hair by Chets</h1>
+    </section>
+
+    <section class="gender-container">
+        <a href="men.html" class="gender-card men-side">
+            <i class="fas fa-mars"></i>
+            <h2>Men's Grooming</h2>
+            <div class="btn-view">Discover More</div>
+        </a>
+        <a href="women.html" class="gender-card women-side">
+            <i class="fas fa-venus"></i>
+            <h2>Women's Beauty</h2>
+            <div class="btn-view">Discover More</div>
+        </a>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-grid">
+            <div>
+                <h3>Location</h3>
+                <p>Siddhraj Z Square, Shop No. W00-7<br>Kudasan, Gandhinagar<br>Gujarat - 382419</p>
+            </div>
+            <div>
+                <h3>Connect</h3>
+                <p>Email: Chetsnai1111@gmail.com</p>
+                <p>Phone: <a href="tel:9925569261" style="color: inherit; text-decoration: none;">+91 99255 69261</a></p>
+            </div>
+            <div>
+                <h3>Follow Us</h3>
+                <p>Instagram: @saloohairbychets</p>
+                <p>Facebook: Saloo Hair by Chets</p>
+            </div>
+        </div>
+        <p style="font-size: 12px; margin-top: 40px;">&copy; 2026 SALOO HAIR BY CHETS. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+</body>
+</html>
