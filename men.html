@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saloo Hair by Chets | Madame Haute Couture Beauty</title>
+    <title>Saloo Hair by Chets | Monsieur Haute Couture Grooming</title>
     
     <link rel="icon" type="image/jpeg" href="logo.jpeg">
     
@@ -37,12 +37,13 @@
         .reveal { opacity: 0; transform: translateY(40px); transition: var(--transition); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* --- RESPONSIVE STICKY HEADER --- */
+        /* --- RESPONSIVE HEADER --- */
         header {
             display: flex; justify-content: space-between; align-items: center;
             padding: 10px 8%; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px);
             position: fixed; width: 100%; top: 0; z-index: 2000; 
             box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
         }
 
         .logo img { height: 50px; width: auto; display: block; }
@@ -50,15 +51,12 @@
         /* Navigation List */
         .nav-list { display: flex; align-items: center; list-style: none; }
         .nav-item { position: relative; margin-left: 25px; }
-
         .nav-item a { 
             text-decoration: none; color: var(--primary-blue); 
             font-size: 13px; text-transform: uppercase; font-weight: 600; 
             letter-spacing: 1.5px; transition: 0.3s;
-            padding: 10px 0;
-            font-family: 'Work Sans', sans-serif;
+            padding: 10px 0; font-family: 'Work Sans', sans-serif;
         }
-
         .nav-item a:hover { color: var(--gold); }
 
         /* Dropdown */
@@ -67,27 +65,22 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.1); opacity: 0; visibility: hidden; 
             transform: translateY(10px); transition: 0.3s; padding: 10px 0; 
         }
-        
         .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
         .dropdown a { display: block; padding: 10px 20px; text-transform: none; font-weight: 400; color: var(--primary-blue); border: none; }
-        .dropdown a:hover { color: var(--gold); background: #fdfcfb; }
 
-        /* Hamburger Menu Icon */
+        /* Mobile Toggle Icon */
         .menu-toggle { display: none; font-size: 24px; color: var(--primary-blue); cursor: pointer; }
 
         .call-btn {
-            background: var(--primary-blue);
-            color: var(--white) !important;
-            padding: 10px 20px !important;
-            border-radius: 2px;
-            font-weight: 600;
+            background: var(--primary-blue); color: var(--white) !important;
+            padding: 8px 18px !important; border-radius: 2px; font-weight: 600;
         }
 
-        /* --- HERO (Margin for Sticky Nav) --- */
+        /* --- HERO --- */
         .hero {
             height: 60vh; margin-top: 70px;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('1.jpeg');
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('1.jpeg');
             background-size: cover; background-position: center; background-attachment: fixed;
             text-align: center; padding: 0 20px;
         }
@@ -98,65 +91,57 @@
         .section-header { text-align: center; margin-bottom: 50px; }
         .section-header h2 { font-size: clamp(30px, 5vw, 50px); color: var(--gold); text-transform: uppercase; letter-spacing: 5px; }
 
-        .filter-nav { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
+        .filter-nav { display: flex; justify-content: center; gap: 10px; margin-bottom: 60px; flex-wrap: wrap; }
         .filter-nav button { 
             background: none; border: 1px solid var(--gold); color: var(--white); 
-            padding: 8px 20px; cursor: pointer; font-size: 11px; letter-spacing: 2px; 
+            padding: 8px 15px; cursor: pointer; font-size: 10px; letter-spacing: 1px; 
             text-transform: uppercase; transition: 0.3s; 
         }
         .filter-nav button.active { background: var(--gold); color: var(--black); }
 
         /* Menu Grid */
         .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
-        .category-block { margin-bottom: 40px; }
+        .category-block { margin-bottom: 40px; border-top: 1px solid rgba(212,175,87,0.2); padding-top: 20px; }
         .category-block.hidden { display: none; }
-        .category-block h3 { font-size: 28px; color: var(--gold); margin-bottom: 25px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 10px; }
+        .category-block h3 { font-size: 24px; color: var(--gold); margin-bottom: 25px; text-transform: uppercase; }
 
-        .service-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px; transition: 0.3s; cursor: pointer; }
-        .service-row:hover { color: var(--gold); transform: translateX(5px); }
+        .service-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 15px; transition: 0.3s; cursor: pointer; }
+        .service-row:hover { color: var(--gold); padding-left: 5px; }
         .service-line { flex-grow: 1; border-bottom: 1px solid rgba(255,255,255,0.1); margin: 0 10px; }
-        .price { font-family: 'Playfair Display'; font-style: italic; font-size: 18px; white-space: nowrap; }
+        .price { font-family: 'Playfair Display'; font-style: italic; font-size: 17px; white-space: nowrap; }
 
-        /* --- BRANCH FOOTER --- */
+        /* --- FOOTER --- */
         footer { padding: 60px 8% 30px; background: #050505; border-top: 1px solid rgba(212,175,55,0.1); }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 30px; text-align: center; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 30px; text-align: center; }
         .footer-grid h4 { color: var(--gold); font-size: 18px; margin-bottom: 15px; text-transform: uppercase; font-family: 'EB Garamond'; }
         .footer-grid p { color: var(--gray); font-size: 13px; font-family: 'Work Sans'; margin-bottom: 5px; }
 
-        /* --- MEDIA QUERIES --- */
+        /* --- MOBILE MEDIA QUERIES --- */
         @media (max-width: 992px) {
             header { padding: 10px 5%; }
             .menu-toggle { display: block; }
             .nav-list {
                 display: none; flex-direction: column; position: absolute;
-                top: 70px; left: 0; width: 100%; background: white;
+                top: 100%; left: 0; width: 100%; background: white;
                 padding: 20px 0; box-shadow: 0 10px 15px rgba(0,0,0,0.1);
             }
             .nav-list.active { display: flex; }
             .nav-item { margin: 10px 0; width: 100%; text-align: center; }
-            .dropdown { position: relative; width: 100%; opacity: 1; visibility: visible; transform: none; box-shadow: none; display: none; }
+            .dropdown { position: relative; width: 100%; display: none; }
             .nav-item:hover .dropdown { display: block; }
             .hero { background-attachment: scroll; }
-        }
-
-        @media (max-width: 600px) {
-            .menu-section { padding: 40px 5%; }
             .menu-grid { grid-template-columns: 1fr; }
-            .price { font-size: 16px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="index.html" class="logo">
-            <img src="logo.jpeg" alt="Saloo Hair by Chets">
-        </a>
+        <a href="index.html" class="logo"><img src="logo.jpeg" alt="Saloo Hair by Chets"></a>
         <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
         <nav>
             <ul class="nav-list" id="navList">
                 <li class="nav-item"><a href="index.html">Home</a></li>
-                <li class="nav-item"><a href="#about">About Us</a></li>
                 <li class="nav-item">
                     <a href="#">Services <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
                     <div class="dropdown">
@@ -164,51 +149,66 @@
                         <a href="women.html">Women's Beauty</a>
                     </div>
                 </li>
-                <li class="nav-item"><a href="tel:9925569261" class="call-btn">Call Now</a></li>
+                <li class="nav-item"><a href="tel:9925569261" class="call-btn">9925569261</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="hero">
-        <h1 class="reveal">Madame</h1>
-        <p class="reveal" style="letter-spacing: 5px; color: var(--gold);">EXQUISITE BEAUTE</p>
+        <h1 class="reveal">Monsieur</h1>
+        <p class="reveal" style="letter-spacing: 5px; color: var(--gold);">EXQUISITE GROOMING</p>
     </section>
 
     <section class="menu-section" id="menu">
         <div class="section-header reveal">
-            <h2>Madame Menu</h2>
+            <h2>Monsieur Collections</h2>
             <div style="width: 60px; height: 1px; background: var(--gold); margin: 20px auto;"></div>
         </div>
 
         <div class="filter-nav reveal">
-            <button class="active" onclick="filterMenu('all', this)">All Collections</button>
-            <button onclick="filterMenu('hair', this)">Styling & Texture</button>
+            <button class="active" onclick="filterMenu('all', this)">All</button>
+            <button onclick="filterMenu('hair', this)">Hair & Beard</button>
             <button onclick="filterMenu('skin', this)">Skin & Facial</button>
-            <button onclick="filterMenu('rituals', this)">Rituals</button>
-            <button onclick="filterMenu('makeup', this)">Make-up</button>
+            <button onclick="filterMenu('body', this)">Body & Spa</button>
         </div>
 
         <div class="menu-grid">
+            
             <div class="category-block reveal" data-cat="hair">
-                <h3>Cuts & Styling</h3>
-                [cite_start]<div class="service-row"><span>Creative Stylist Cut</span><div class="service-line"></div><span class="price">₹1700 [cite: 31]</span></div>
-                [cite_start]<div class="service-row"><span>Global Color (Long)</span><div class="service-line"></div><span class="price">₹7750 [cite: 43]</span></div>
-                [cite_start]<div class="service-row"><span>Nanoplastia (Long)</span><div class="service-line"></div><span class="price">₹13000 [cite: 96]</span></div>
+                <h3>Hair Cuts & Beard</h3>
+                <div class="service-row"><span>Boys (Below 12 Years)</span><div class="service-line"></div><span class="price">₹450</span></div>
+                <div class="service-row"><span>Hair Cut – Master Stylist</span><div class="service-line"></div><span class="price">₹550</span></div>
+                <div class="service-row"><span>Hair Cut – Senior Stylist</span><div class="service-line"></div><span class="price">₹750</span></div>
+                <div class="service-row"><span>Beard Craft</span><div class="service-line"></div><span class="price">₹450</span></div>
+                <div class="service-row"><span>Shaving / Trim</span><div class="service-line"></div><span class="price">₹350</span></div>
+                <div class="service-row"><span>Classic Wash</span><div class="service-line"></div><span class="price">₹400</span></div>
+                <div class="service-row"><span>Luxury Wash</span><div class="service-line"></div><span class="price">₹500</span></div>
+            </div>
+
+            <div class="category-block reveal" data-cat="hair">
+                <h3>Color & Treatments</h3>
+                <div class="service-row"><span>Global Color (INOA/Majirel)</span><div class="service-line"></div><span class="price">₹1500–₹1600</span></div>
+                <div class="service-row"><span>Global Highlights</span><div class="service-line"></div><span class="price">₹2000–₹2250</span></div>
+                <div class="service-row"><span>Nanoplastia</span><div class="service-line"></div><span class="price">₹6750</span></div>
+                <div class="service-row"><span>Smoothening / Botox</span><div class="service-line"></div><span class="price">₹6000</span></div>
             </div>
 
             <div class="category-block reveal" data-cat="skin">
-                <h3>Skin Care</h3>
-                [cite_start]<div class="service-row"><span>Hydra Facial</span><div class="service-line"></div><span class="price">₹5750 [cite: 152]</span></div>
-                [cite_start]<div class="service-row"><span>Signature Skeyndor</span><div class="service-line"></div><span class="price">₹11000 [cite: 152]</span></div>
-                [cite_start]<div class="service-row"><span>Full Body De-Tan</span><div class="service-line"></div><span class="price">₹15500 [cite: 165]</span></div>
+                <h3>Skin & Facial</h3>
+                <div class="service-row"><span>Classic Clean Up</span><div class="service-line"></div><span class="price">₹1500</span></div>
+                <div class="service-row"><span>Premium Facial (Skeyndor)</span><div class="service-line"></div><span class="price">₹6750</span></div>
+                <div class="service-row"><span>Hydra Facial</span><div class="service-line"></div><span class="price">₹5750</span></div>
+                <div class="service-row"><span>Full Body De-Tan</span><div class="service-line"></div><span class="price">₹15500</span></div>
             </div>
 
-            <div class="category-block reveal" data-cat="makeup">
-                <h3>Bridal & Special</h3>
-                [cite_start]<div class="service-row"><span>Wedding HD Make-up</span><div class="service-line"></div><span class="price">₹15500 [cite: 198]</span></div>
-                [cite_start]<div class="service-row"><span>Gel Nail Extension</span><div class="service-line"></div><span class="price">₹3000 [cite: 185]</span></div>
-                [cite_start]<div class="service-row"><span>Kérastase Youth Ritual</span><div class="service-line"></div><span class="price">₹6000 [cite: 112]</span></div>
+            <div class="category-block reveal" data-cat="body">
+                <h3>Body & Grooming</h3>
+                <div class="service-row"><span>Full Body Trimming</span><div class="service-line"></div><span class="price">₹2400</span></div>
+                <div class="service-row"><span>Luxury Pedicure</span><div class="service-line"></div><span class="price">₹2400</span></div>
+                <div class="service-row"><span>Deep Tissue Therapy</span><div class="service-line"></div><span class="price">₹2750</span></div>
+                <div class="service-row"><span>Groom Make-up (HD)</span><div class="service-line"></div><span class="price">₹4500</span></div>
             </div>
+
         </div>
     </section>
 
@@ -221,7 +221,7 @@
             </div>
             <div>
                 <h4>Branch: Ahmedabad</h4>
-                <p>University Road</p>
+                <p>University Road Center</p>
                 <p>+91 81412 34567</p>
             </div>
             <div>
@@ -230,7 +230,7 @@
                 <p>Support: 9925569261</p>
             </div>
         </div>
-        [cite_start]<p style="text-align:center; font-size: 10px; color: #444; margin-top: 30px; letter-spacing: 2px;">© 2026 SALOO HAIR BY CHETS | [cite: 38] 5% GST APPLICABLE</p>
+        <p style="text-align:center; font-size: 10px; color: #444; margin-top: 30px; letter-spacing: 2px;">© 2026 SALOO HAIR BY CHETS | 5% GST APPLICABLE</p>
     </footer>
 
     <script>
