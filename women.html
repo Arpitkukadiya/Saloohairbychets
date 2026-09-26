@@ -30,6 +30,27 @@
             --radius: 6px;
         
         }
+        .floating-whatsapp {
+    position: fixed;
+    bottom: 85px;
+    right: 20px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: var(--white);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.5rem;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+    z-index: 100;
+    transition: 0.3s;
+}
+.floating-whatsapp:hover {
+    transform: translateY(-5px) scale(1.05);
+}
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
