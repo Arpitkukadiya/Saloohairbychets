@@ -141,13 +141,11 @@
         .filter-nav button:hover { color: var(--steel-blue-light); border-color: var(--steel-blue); transform: translateY(-3px); }
         .filter-nav button.active { background: linear-gradient(135deg, var(--steel-blue), var(--steel-blue-light)); color: var(--white); border-color: var(--steel-blue); font-weight: 600; box-shadow: 0 5px 15px rgba(44, 57, 107, 0.2); }
 
-        /* ✅ FIX: Menu grid is now visible by default */
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; transition: var(--transition); }
-        .menu-grid.active { opacity: 1; transform: translateY(0); }
+        /* Menu grid — visible immediately (no fade-in dependency) */
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; }
 
-        /* ✅ FIX: Category blocks visible by default, animate in via revealed */
-        .category-block { margin-bottom: 40px; border-top: 1px solid rgba(44, 57, 107, 0.3); padding-top: 30px; transition: var(--transition); opacity: 0; transform: translateY(30px); }
-        .category-block.revealed { opacity: 1; transform: translateY(0); }
+        /* Category blocks — visible by default; .revealed is only for animation */
+        .category-block { margin-bottom: 40px; border-top: 1px solid rgba(44, 57, 107, 0.3); padding-top: 30px; opacity: 1; transform: none; transition: var(--transition); }
         .category-block.hidden { display: none; }
         .category-block h3 { font-size: 1.8rem; color: var(--steel-blue-light); margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; position: relative; padding-bottom: 15px; }
         .category-block h3::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 2px; background: var(--steel-blue); }
@@ -169,10 +167,14 @@
         .floating-whatsapp { position: fixed; bottom: 105px; right: 30px; background: linear-gradient(135deg, #25D366, #128C7E); color: var(--white); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.7rem; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); z-index: 100; transition: var(--transition); }
         .floating-whatsapp:hover { transform: translateY(-5px) scale(1.05); }
 
-        /* --- SCROLL TOP (NEW) --- */
+        /* --- SCROLL TOP --- */
         .scroll-top { position: fixed; bottom: 180px; right: 35px; width: 50px; height: 50px; background: rgba(26, 26, 26, 0.9); color: var(--steel-blue-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.2rem; opacity: 0; visibility: hidden; transition: var(--transition); border: 1px solid rgba(44, 57, 107, 0.3); z-index: 100; cursor: pointer; }
         .scroll-top.active { opacity: 1; visibility: visible; }
         .scroll-top:hover { background: var(--steel-blue); color: var(--white); transform: translateY(-3px); }
+
+        /* --- SCROLL INDICATOR (HERO) --- */
+        .scroll-indicator { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: var(--gold); font-size: 1.5rem; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(10px); } }
 
         /* --- FOOTER --- */
         footer { padding: 60px 5% 30px; background: #050505; border-top: 1px solid rgba(212,175,55,0.1); }
@@ -184,10 +186,6 @@
         .social-icons a:hover { background: var(--steel-blue); color: var(--white); transform: translateY(-5px); }
         .footer-bottom { text-align: center; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.75rem; color: var(--gray); }
 
-        /* --- SCROLL INDICATOR (HERO) --- */
-        .scroll-indicator { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: var(--gold); font-size: 1.5rem; animation: bounce 2s infinite; }
-        @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(10px); } }
-
         /* --- RESPONSIVE --- */
         @media (max-width: 992px) { 
             .menu-toggle { display: flex; } 
@@ -197,6 +195,8 @@
             .menu-grid { grid-template-columns: 1fr; gap: 30px; }
             .filter-nav { gap: 10px; }
             .filter-nav button { padding: 10px 18px; font-size: 0.75rem; }
+            .floating-whatsapp, .floating-cta { width: 52px; height: 52px; font-size: 1.3rem; }
+            .scroll-top { width: 44px; height: 44px; bottom: 165px; right: 34px; }
         }
     </style>
 </head>
@@ -221,7 +221,6 @@
                         <a href="women.html">Women's Beauty</a>
                     </div>
                 </li>
-                <!-- ✅ FIX: Book Appointment moved INSIDE the ul -->
                 <li class="nav-item"><a href="book.html">Book Appointment</a></li>
                 <li class="nav-item"><a href="tel:9925569261" class="call-btn"><span>99255 69261</span></a></li>
             </ul>
@@ -421,7 +420,6 @@
     <a href="tel:9925569261" class="floating-cta" aria-label="Call">
         <i class="fas fa-phone-alt"></i>
     </a>
-    <!-- ✅ FIX: Added missing scroll-top button -->
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
         <i class="fas fa-chevron-up"></i>
     </button>
@@ -429,11 +427,29 @@
     <!-- FOOTER -->
     <footer>
         <div class="footer-grid">
-            <div class="footer-col"><h4>Kudasan Branch</h4><p>Siddhraj Z Square, W00-7</p><p>Kudasan, Gandhinagar - 382419</p></div>
-            <div class="footer-col"><h4>Connect With Us</h4><p>Chetsnai1111@gmail.com</p><p>Support: 99255 69261</p><p>Mon-Sun: 10:00 AM - 9:00 PM</p></div>
-            <div class="footer-col"><h4>Follow Our Journey</h4><p style="color: var(--gold-light);">@saloohairbychets</p><div class="social-icons"><a href="https://www.instagram.com/saloo_hair_by_chets/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="https://wa.me/919925569261" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></div></div>
+            <div class="footer-col">
+                <h4>Kudasan Branch</h4>
+                <p>Siddhraj Z Square, W00-7</p>
+                <p>Kudasan, Gandhinagar - 382419</p>
+            </div>
+            <div class="footer-col">
+                <h4>Connect With Us</h4>
+                <p>Chetsnai1111@gmail.com</p>
+                <p>Support: 99255 69261</p>
+                <p>Mon-Sun: 10:00 AM - 9:00 PM</p>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Our Journey</h4>
+                <p style="color: var(--gold-light);">@saloohairbychets</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/saloo_hair_by_chets/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/919925569261" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
         </div>
-        <div class="footer-bottom"><p>© 2026 SALOO HAIR BY CHETS | MADAME COLLECTION | 5% GST APPLICABLE</p></div>
+        <div class="footer-bottom">
+            <p>© 2026 SALOO HAIR BY CHETS | MONSIEUR COLLECTION | 5% GST APPLICABLE</p>
+        </div>
     </footer>
 
     <script>
@@ -443,58 +459,43 @@
         const menuToggle = document.getElementById('menuToggle');
         const mobileMenu = document.getElementById('mobileMenu');
         const menuOverlay = document.getElementById('menuOverlay');
-        const menuGrid = document.getElementById('menuGrid');
-        const scrollTopBtn = document.getElementById('scrollTop'); // ✅ Now exists
+        const scrollTopBtn = document.getElementById('scrollTop');
 
-        // ✅ FIX: Make everything visible immediately (don't rely solely on JS)
-        document.querySelectorAll('.category-block').forEach(el => el.classList.add('revealed'));
-
-        // Reveal on scroll (progressive enhancement)
-        function revealOnScroll() {
-            document.querySelectorAll('.category-block:not(.hidden)').forEach(el => {
-                if (el.getBoundingClientRect().top < window.innerHeight / 1.2) {
-                    el.classList.add('revealed');
-                }
-            });
-        }
-
-        // Loader hide
+        // --- Loader hide ---
         window.addEventListener('load', () => {
             setTimeout(() => {
-                loader.classList.add('hidden');
-                menuGrid.classList.add('active');
+                if (loader) loader.classList.add('hidden');
             }, 800);
-            revealOnScroll();
         });
 
-        // Scroll events
+        // --- Scroll effects ---
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) header.classList.add('scrolled');
             else header.classList.remove('scrolled');
 
-            // ✅ FIX: Guard against null (belt-and-braces)
             if (scrollTopBtn) {
                 if (window.scrollY > 500) scrollTopBtn.classList.add('active');
                 else scrollTopBtn.classList.remove('active');
             }
-
-            revealOnScroll();
         });
 
-        // Mobile menu
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-            menuOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
+        // --- Mobile menu ---
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.add('active');
+                menuOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+        if (menuOverlay) {
+            menuOverlay.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        }
 
-        menuOverlay.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-
-        // ✅ FIX: Filter menu — immediate reveal, no reliance on scroll
+        // --- Filter menu ---
         function filterMenu(category, btn) {
             const blocks = document.querySelectorAll('.category-block');
             const btns = document.querySelectorAll('.filter-nav button');
@@ -502,20 +503,18 @@
             btn.classList.add('active');
 
             blocks.forEach(block => {
-                block.classList.add('hidden');
-                if (category === 'all' || block.getAttribute('data-cat') === category) {
-                    setTimeout(() => {
-                        block.classList.remove('hidden');
-                        block.classList.add('revealed');
-                    }, 50);
+                const match = (category === 'all' || block.getAttribute('data-cat') === category);
+                if (match) {
+                    block.classList.remove('hidden');
+                } else {
+                    block.classList.add('hidden');
                 }
             });
         }
 
-        // Scroll to top
+        // --- Scroll to top ---
         if (scrollTopBtn) {
-            scrollTopBtn.addEventListener('click', (e) => {
-                e.preventDefault();
+            scrollTopBtn.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
